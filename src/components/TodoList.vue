@@ -2,10 +2,16 @@
     <div>
         <div>
             <input type="text" v-model="inputValue" />
-            <button @click="addItem">추가하기</button>
+            <button @click="addItem()">추가하기</button>
         </div>
       <ul>
-        <ListItem v-for="{value, index} in listArray" :key="index" :text="value" />
+        <ListItem
+            v-for="(value, index) in listArray"
+            :key="index"
+            :index="index"
+            :text="value === ''? undefined : value"
+            @delete="catchDeleteItem"
+        />
       </ul>
     </div>
 </template>
@@ -13,11 +19,11 @@
 import ListItem from "./ListItem";
 
 export default {
-  data(){
+  data() {
     return{
-      inputValue:"",
-      listArray:[]
-    }
+      inputValue: "",
+      listArray: []
+    };
   },
   components:{
     ListItem
@@ -26,6 +32,9 @@ export default {
     addItem() {
       this.listArray.push(this.inputValue);
       this.inputValue = "";
+    },
+    catchDeleteItem(index){
+      this.listArray.splice(index, 1)
     }
   }
 }

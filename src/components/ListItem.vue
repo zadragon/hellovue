@@ -1,17 +1,28 @@
 <template>
-    <li>{{text}}</li>
+  <li>
+    {{ text }}
+    <button @click="itemDelete">삭제</button>
+  </li>
 </template>
 
 <script>
 export default {
-    props:{
-        text:{
-            type:String
-        }
+  props: {
+    index: {
+      type: Number
+    },
+    text: {
+      type: String
     }
+  },
+  methods:{
+    itemDelete(){
+      this.$emit('delete',this.index)
+    }
+  }
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>
