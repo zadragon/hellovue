@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+  <div class="Board">
+    board
     
   </div>
 </template>
@@ -10,7 +10,7 @@
 
 
 export default {
-  name: 'Home',
+  name: 'Board',
   components: {
 
   }
